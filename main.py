@@ -33,6 +33,8 @@ def validate(text: str) -> str:
         )
     if "\n" in text or "\r" in text:
         raise ValueError("horoscope must be a single line")
+    if any(ord(ch) < 32 for ch in text):
+        raise ValueError("horoscope must not contain control characters")
     return text
 
 
